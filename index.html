@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshay Misal - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom styles that can't be done with Tailwind */
+        .typing-text {
+            color: #3b82f6;
+            border-right: 2px solid;
+            animation: blink 0.7s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .nav-links {
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn span {
+            display: block;
+            height: 3px;
+            width: 28px;
+            background: #1e40af;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .toggle-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .toggle-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        .hero-img {
+            box-shadow: 0 20px 30px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .hero-img:hover {
+            transform: translateY(-5px);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2) translateY(-5px);
+        }
+
+        .mapbox {
+            position: relative;
+            height: 400px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mapbox figure {
+            height: 100%;
+        }
+        
+        .mapbox iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl font-bold bg-gradient-to-r from-pink-500 via-yellow-400 to-blue-500 text-transparent bg-clip-text">akky<span class="text--600">741</span></div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-blue-800 hover:text-blue-600 font-medium transition">Home</a>
+                <a href="#work" class="text-gray-600 hover:text-blue-600 font-medium transition">Work</a>
+                <a href="#blog" class="text-gray-600 hover:text-blue-600 font-medium transition">Blog</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 font-medium transition">Contact</a>
+            </nav>
+            
+            <!-- Mobile menu button -->
+            <button class="toggle-btn md:hidden focus:outline-none">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="nav-links md:hidden bg-white w-full hidden transition-all duration-300 ease-in-out shadow-lg">
+            <div class="flex flex-col px-4 py-3 space-y-4">
+                <a href="#" class="text-blue-800 hover:text-blue-600 font-medium py-2 border-b border-gray-100">Home</a>
+                <a href="#work" class="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100">Work</a>
+                <a href="#blog" class="text-gray-600 hover:text-blue-600 font-medium py-2 border-b border-gray-100">Blog</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 font-medium py-2">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen pt-32 md:pt-24 pb-12 px-4 flex items-center">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <!-- Hero Image -->
+                <div class="md:w-1/2 flex justify-center order-2 md:order-1">
+                    <div class="relative max-w-md">
+                        <div class="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden hero-img border-4 border-blue-100">
+                            <img src="images/Akky.jpeg" alt="Akshay Misal" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-5 -right-5 bg-blue-600 text-white px-4 py-2 rounded-lg">
+                            <span class="text-xl">👋</span> Available for work
+                        </div>
+                    </div>
+                </div>
+                                
+                <!-- Hero Text -->
+                <div class="md:w-1/2 order-1 md:order-2">
+                    <h5 class="text-lg md:text-xl text-gray-600 mb-2">Hi, I'm <span class="typing-text font-bold" id="typed-text"></span></h5>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Akshay Misal</h1>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        I'm Akshay Misal - a passionate Web Designer, Data Analyst, Data Scientist, and AI Engineer 
+                        with over a year of hands-on experience in data analysis, machine learning, 
+                        and AI-powered applications. I specialize in transforming complex data into 
+                        actionable insights and intelligent solutions.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+                        <a href="files/Akshay Misal.pdf" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg text-center transition shadow-lg hover:shadow-xl">
+                            <i class="fas fa-download mr-2"></i> Download Resume
+                        </a>
+                        <a href="mailto:misalakshay2001@gmail.com" class="bg-white hover:bg-gray-100 text-blue-600 font-medium py-3 px-6 rounded-lg text-center border border-blue-100 transition shadow hover:shadow-md">
+                            <i class="fas fa-paper-plane mr-2"></i> Let's Connect
+                        </a>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/akky741" class="social-icon text-gray-700 hover:text-black text-2xl">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/akshay-misal-a6120026a/" class="social-icon text-blue-600 hover:text-blue-800 text-2xl">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://huggingface.co/akky741" class="social-icon text-orange-500 hover:text-orange-700 text-2xl">
+                            <i class="fas fa-smile"></i>
+                        </a>
+                        <a href="https://www.facebook.com/akshay.misal.419709" class="social-icon text-blue-700 hover:text-blue-900 text-2xl">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_akky_741_/" class="social-icon text-pink-600 hover:text-pink-800 text-2xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+      
+
+    <!-- Interactive Projects Section -->
+<section id="work" class="py-16 px-4 bg-gray-100">
+  <div class="container mx-auto">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">My Work & Projects</h2>
+    <input type="text" id="searchInput" class="search-bar w-full mb-6 p-3 rounded border border-gray-300" placeholder="Search projects by title or tag..." />
+
+    <div class="grid" id="projectsGrid"></div>
+
+    <div class="text-center mt-8">
+      <button id="toggleFormBtn" class="edit px-6 py-2 rounded text-white bg-blue-600 hover:bg-blue-700">Add New Project</button>
+    </div>
+
+    <div class="upload-form hidden mt-8 bg-white p-6 rounded shadow-md max-w-2xl mx-auto" id="uploadFormContainer">
+      <form id="projectForm">
+        <input type="hidden" id="editIndex" value="-1" />
+        
+        <label for="titleInput" class="font-semibold">Project Title</label>
+        <input type="text" id="titleInput" class="w-full mb-3 p-2 border rounded" required />
+
+        <label for="descriptionInput" class="font-semibold">Description</label>
+        <textarea id="descriptionInput" rows="3" class="w-full mb-3 p-2 border rounded" required></textarea>
+
+        <label for="tagsInput" class="font-semibold">Tags (comma separated)</label>
+        <input type="text" id="tagsInput" class="w-full mb-3 p-2 border rounded" />
+
+        <label for="linkInput" class="font-semibold">Project Link</label>
+        <input type="text" id="linkInput" class="w-full mb-3 p-2 border rounded" placeholder="https://..." />
+
+        <label for="imageFileInput" class="font-semibold">Project Image</label>
+        <input type="file" id="imageFileInput" class="w-full mb-3" accept="image/*" />
+
+        <div class="text-right">
+          <button type="submit" class="save bg-green-600 text-white px-4 py-2 rounded mr-2 hover:bg-green-700">Save</button>
+          <button type="button" class="cancel bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700" id="cancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Script dependencies & functionality -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+  const projectsGrid = document.getElementById('projectsGrid');
+  const searchInput = document.getElementById('searchInput');
+  const toggleFormBtn = document.getElementById('toggleFormBtn');
+  const uploadFormContainer = document.getElementById('uploadFormContainer');
+  const projectForm = document.getElementById('projectForm');
+  const editIndexInput = document.getElementById('editIndex');
+  const titleInput = document.getElementById('titleInput');
+  const descriptionInput = document.getElementById('descriptionInput');
+  const tagsInput = document.getElementById('tagsInput');
+  const linkInput = document.getElementById('linkInput');
+  const imageFileInput = document.getElementById('imageFileInput');
+  const cancelBtn = document.getElementById('cancelBtn');
+
+  let projects = [];
+
+  function loadProjects() {
+    const stored = localStorage.getItem('projects');
+    projects = stored ? JSON.parse(stored) : [];
+  }
+
+  function saveProjects() {
+    localStorage.setItem('projects', JSON.stringify(projects));
+  }
+
+  function renderProjects(filter = '') {
+    const searchTerm = filter.toLowerCase();
+    projectsGrid.innerHTML = '';
+
+    const filteredProjects = projects.filter(p =>
+      p.title.toLowerCase().includes(searchTerm) ||
+      p.tags.some(t => t.toLowerCase().includes(searchTerm))
+    );
+
+    if (filteredProjects.length === 0) {
+      projectsGrid.innerHTML = '<p class="text-center text-gray-500">No projects found.</p>';
+      return;
+    }
+
+    filteredProjects.forEach((project, index) => {
+      const card = document.createElement('div');
+      card.className = 'project-card bg-white p-4 rounded-lg shadow transition-transform hover:scale-105';
+      card.onclick = () => { if (project.link) window.open(project.link, '_blank'); };
+
+      const imgUrl = project.image || 'https://via.placeholder.com/400x150?text=No+Image';
+
+      card.innerHTML = `
+        <div class="project-image mb-4 h-40 bg-cover bg-center rounded" style="background-image: url('${imgUrl}')"></div>
+        <div class="project-title font-bold text-lg mb-2">${escapeHtml(project.title)}</div>
+        <div class="project-description text-gray-600 mb-3">${escapeHtml(project.description)}</div>
+        <div class="tags mb-3">${project.tags.map(t => `<span class="tag bg-indigo-100 text-indigo-800 px-2 py-1 text-sm rounded-full mr-1">${escapeHtml(t)}</span>`).join('')}</div>
+        <div class="buttons flex gap-2">
+          <button class="edit bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700" onclick="event.stopPropagation(); editProject(${index})"><i class="fas fa-edit"></i></button>
+          <button class="delete bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700" onclick="event.stopPropagation(); deleteProject(${index})"><i class="fas fa-trash"></i></button>
+        </div>
+      `;
+      projectsGrid.appendChild(card);
+    });
+  }
+
+  function escapeHtml(text) {
+    return text.replace(/[&<>"']/g, m => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+    }[m]));
+  }
+
+  function toggleForm(show = true) {
+    uploadFormContainer.classList.toggle('hidden', !show);
+    toggleFormBtn.textContent = show ? 'Close Form' : 'Add New Project';
+    if (!show) clearForm();
+  }
+
+  function clearForm() {
+    editIndexInput.value = -1;
+    titleInput.value = '';
+    descriptionInput.value = '';
+    tagsInput.value = '';
+    linkInput.value = '';
+    imageFileInput.value = '';
+  }
+
+  window.editProject = function (index) {
+    const project = projects[index];
+    if (!project) return alert('Project not found');
+    toggleForm(true);
+    editIndexInput.value = index;
+    titleInput.value = project.title;
+    descriptionInput.value = project.description;
+    tagsInput.value = project.tags.join(', ');
+    linkInput.value = project.link || '';
+  };
+
+  window.deleteProject = function (index) {
+    if (!confirm('Are you sure you want to delete this project?')) return;
+    projects.splice(index, 1);
+    saveProjects();
+    renderProjects(searchInput.value);
+  };
+
+  projectForm.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const title = titleInput.value.trim();
+    const description = descriptionInput.value.trim();
+    const tags = tagsInput.value.split(',').map(t => t.trim()).filter(t => t);
+    const link = linkInput.value.trim();
+
+    if (!title || !description) return alert('Please fill in required fields.');
+
+    const imageFile = imageFileInput.files[0];
+    let image = '';
+
+    if (imageFile) {
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        image = event.target.result;
+        saveProjectData({ title, description, tags, image, link });
+      };
+      reader.readAsDataURL(imageFile);
+    } else {
+      const index = Number(editIndexInput.value);
+      const currentImage = index >= 0 ? projects[index].image : '';
+      saveProjectData({ title, description, tags, image: currentImage, link });
+    }
+  });
+
+  function saveProjectData(project) {
+    const index = Number(editIndexInput.value);
+    if (index >= 0) {
+      projects[index] = project;
+    } else {
+      projects.push(project);
+    }
+    saveProjects();
+    renderProjects(searchInput.value);
+    toggleForm(false);
+  }
+
+  cancelBtn.addEventListener('click', () => toggleForm(false));
+  toggleFormBtn.addEventListener('click', () => toggleForm(uploadFormContainer.classList.contains('hidden')));
+  searchInput.addEventListener('input', e => renderProjects(e.target.value));
+
+  loadProjects();
+  renderProjects();
+</script>
+
+
+    <!-- Blog Section -->
+   
+
+<section id="blog" class="py-16 px-4 bg-gray-100">
+  <div class="container mx-auto">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Who's Akshay</h2>
+    <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+      Learn more about my background, passions, and the journey that brought me into data science and AI.
+    </p>
+
+    <!-- About Cards Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" id="about-cards"></div>
+
+    <!-- Upload and Add Section -->
+    <div class="text-center mt-12 space-x-4">
+      <button onclick="toggleAboutForm()" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg shadow hover:shadow-md">
+        Add New Section <i class="fas fa-plus ml-2"></i>
+      </button>
+    </div>
+
+    <!-- Hidden Form -->
+    <div id="about-upload-form" class="hidden mt-6">
+      <form class="space-y-4" onsubmit="event.preventDefault(); saveAboutCard();">
+        <input type="hidden" id="edit-index" value="">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-gray-700 mb-2">Title</label>
+            <input id="about-title" type="text" class="w-full p-2 border rounded" required>
+          </div>
+          <div>
+            <label class="block text-gray-700 mb-2">Image</label>
+            <input id="about-image" type="file" accept="image/*" class="w-full p-2 border rounded">
+          </div>
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2">Description</label>
+          <textarea id="about-description" class="w-full p-2 border rounded" rows="4" required></textarea>
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2">External Link (optional)</label>
+          <input id="about-link" type="url" class="w-full p-2 border rounded">
+        </div>
+        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded shadow">
+          Save Section <i class="fas fa-check ml-2"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+<script>
+  let aboutCards = JSON.parse(localStorage.getItem("aboutCards")) || [];
+
+  window.onload = function () {
+    renderCards();
+  };
+
+  function toggleAboutForm(editIndex = null) {
+    const form = document.getElementById('about-upload-form');
+    form.classList.toggle('hidden');
+    if (editIndex === null) {
+      document.getElementById('edit-index').value = "";
+      document.getElementById('about-title').value = "";
+      document.getElementById('about-description').value = "";
+      document.getElementById('about-link').value = "";
+      document.getElementById('about-image').value = "";
+    }
+  }
+
+  function saveAboutCard() {
+    const title = document.getElementById("about-title").value;
+    const desc = document.getElementById("about-description").value;
+    const link = document.getElementById("about-link").value;
+    const imageInput = document.getElementById("about-image");
+    const file = imageInput.files[0];
+    const editIndex = document.getElementById("edit-index").value;
+
+    const processCard = (imageSrc) => {
+      const cardData = { title, desc, link, image: imageSrc };
+
+      if (editIndex) {
+        aboutCards[editIndex] = cardData;
+      } else {
+        aboutCards.push(cardData);
+      }
+
+      localStorage.setItem("aboutCards", JSON.stringify(aboutCards));
+      renderCards();
+      toggleAboutForm();
+    };
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        processCard(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      const image = editIndex ? aboutCards[editIndex].image : "";
+      processCard(image);
+    }
+  }
+
+  function renderCards() {
+    const container = document.getElementById("about-cards");
+    container.innerHTML = "";
+
+    aboutCards.forEach((card, index) => {
+      const cardHTML = `
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition relative">
+          <div class="h-48 bg-cover bg-center" style="background-image: url('${card.image}')"></div>
+          <div class="p-6">
+            <div class="text-sm text-gray-500 mb-2">Personal Insight</div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">${card.title}</h3>
+            <p class="text-gray-600 mb-4">${card.desc}</p>
+            ${card.link ? `<a href="${card.link}" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+              Visit <i class="fas fa-arrow-right ml-2"></i></a>` : ""}
+            <div class="flex justify-end gap-2 mt-4">
+              <button onclick="editCard(${index})" class="text-sm bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded">Edit</button>
+              <button onclick="deleteCard(${index})" class="text-sm bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">Delete</button>
+            </div>
+          </div>
+        </div>`;
+      container.innerHTML += cardHTML;
+    });
+  }
+
+  function deleteCard(index) {
+    if (confirm("Are you sure you want to delete this section?")) {
+      aboutCards.splice(index, 1);
+      localStorage.setItem("aboutCards", JSON.stringify(aboutCards));
+      renderCards();
+    }
+  }
+
+  function editCard(index) {
+    const card = aboutCards[index];
+    document.getElementById("about-title").value = card.title;
+    document.getElementById("about-description").value = card.desc;
+    document.getElementById("about-link").value = card.link;
+    document.getElementById("edit-index").value = index;
+    document.getElementById("about-image").value = "";
+    document.getElementById("about-upload-form").classList.remove("hidden");
+    window.scrollTo({ top: document.getElementById("about-upload-form").offsetTop - 100, behavior: 'smooth' });
+  }
+</script>
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-100 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Get In Touch</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Feel free to reach out for collaborations or just a friendly hello</p>
+            
+            <!-- Map Section -->
+            <div class="mapbox mb-12">
+                <figure>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.454215753163!2d72.8387223!3d18.9819734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce50924d59ef%3A0xb527d4c517c36618!2sSubhash%20Ln%2C%20Ferbandar%2C%20Ghodapdeo%2C%20Byculla%20East%2C%20Byculla%2C%20Mumbai%2C%20Maharashtra%20400033%2C%20India!5e0!3m2!1sen!2sin!4v1717171717171!5m2!1sen!2sin"
+                        width="100%" height="100%" loading="lazy" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </figure>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-gradient-to-br from-blue-600 to-blue-400 p-10 text-white">
+                        <h2 class="text-2xl font-bold mb-6">Let's Work Together</h2>
+                        <p class="mb-6">I'm currently available for freelance work and full-time opportunities. If you have a project that needs my expertise or just want to say hello, feel free to reach out!</p>
+                                                
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-xl mr-4"></i>
+                                <span>misalakshay2001@gmail.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-alt text-xl mr-4"></i>
+                                <span>+91 7304681901</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-xl mr-4"></i>
+                                <span>Mumbai, Maharashtra, India</span>
+                            </div>
+                        </div>
+                    </div>
+                                        
+                    <div class="md:w-1/2 p-10">
+                        <!-- Success Message Placeholder -->
+<div id="thankyouMsg" class="hidden text-green-600 text-lg font-semibold mb-4">
+  ✅ Thank you! Your message has been sent.
+</div>
+
+<form id="contactForm" action="https://formspree.io/f/xpwrpayp" method="POST" class="space-y-6">
+  <div>
+    <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+    <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" placeholder="John Doe">
+  </div>
+
+  <div>
+    <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+    <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" placeholder="john@example.com">
+  </div>
+
+  <div>
+    <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+    <input type="text" id="subject" name="subject" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" placeholder="Project Inquiry">
+  </div>
+
+  <div>
+    <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+    <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" placeholder="Tell me about your project..."></textarea>
+  </div>
+
+  <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition shadow-lg hover:shadow-xl">
+    Send Message <i class="fas fa-paper-plane ml-2"></i>
+  </button>
+</form>
+
+<!-- JavaScript to handle thank-you message -->
+<script>
+  const form = document.getElementById('contactForm');
+  const thankyouMsg = document.getElementById('thankyouMsg');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      form.reset();
+      thankyouMsg.classList.remove("hidden");
+    } else {
+      alert("Oops! Something went wrong.");
+    }
+  });
+</script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 px-4">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+            <div class="text-2xl font-bold bg-gradient-to-r from-pink-500 via-yellow-400 to-blue-500 text-transparent bg-clip-text">akky<span class="text--600">741</span></div>
+                  <p class="text-gray-400 mt-2"> Web Designer | Data Analyst | Data Scientist | AI Engineer </p>
+                </div>
+                                
+                <div class="flex space-x-6">
+                    <a href="https://github.com/akky741" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/akshay-misal-a6120026a/" class="text-gray-400 hover:text-blue-400 transition">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://huggingface.co/akky741" class="text-gray-400 hover:text-orange-400 transition">
+                        <i class="fas fa-smile text-xl"></i>
+                    </a>
+                    <a href="https://www.facebook.com/akshay.misal.419709" class="text-gray-400 hover:text-blue-300 transition">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/_akky_741_/" class="text-gray-400 hover:text-pink-400 transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Akshay Misal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        // Typed.js for the typing animation
+        document.addEventListener('DOMContentLoaded', function() {
+            var options = {
+                strings: ["AI Developer", "Data Scientist", "Data Analyst"],
+                typeSpeed: 50,
+                backSpeed: 30,
+                loop: true,
+                showCursor: true,
+                cursorChar: "|",
+                smartBackspace: true
+            };
+            
+            var typed = new Typed("#typed-text", options);
+            
+            // Mobile menu toggle
+            const toggleBtn = document.querySelector('.toggle-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            toggleBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    toggleBtn.classList.remove('active');
+                    navLinks.classList.add('hidden');
+                });
+            });
+            
+            // Admin control functions
+            function toggleAdminControls(section) {
+                document.getElementById(`${section}-admin-controls`).classList.toggle('hidden');
+            }
+
+            function showUploadForm(type) {
+                document.getElementById(`${type}-upload-form`).classList.remove('hidden');
+            }
+
+            function showEditMode(type) {
+                alert(`Entering edit mode for ${type}. This would enable edit controls on each item.`);
+                // Implementation would include adding edit buttons to each item
+                // and handling the edit functionality
+            }
+
+            function showDeleteMode(type) {
+                if(confirm(`Are you sure you want to delete selected ${type}?`)) {
+                    alert(`Delete mode activated for ${type}. This would add delete checkboxes to each item.`);
+                    // Implementation would include adding delete checkboxes
+                    // and handling the delete functionality
+                }
+            }
+
+            // Pagination function
+            function loadMoreItems(type, page) {
+                // This would make an API call to load more items
+                console.log(`Loading ${type} page ${page}`);
+                // Implementation would depend on your backend
+            }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                                        
+                    if(this.getAttribute('href') === '#') return;
+                                        
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if(target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
